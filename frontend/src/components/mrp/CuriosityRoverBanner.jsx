@@ -45,7 +45,7 @@ export default function CuriosityRoverBanner() {
                 Part of NASA's Mars Science Laboratory mission, at the time of launch, Curiosity was the largest and most capable rover ever sent to Mars at that time.
             </Box>
           <Typography href="/mrp-home" sx={{ marginTop: 2, display: 'flex', alignItems: 'center', fontSize: 16, fontWeight: 700 }}>
-              <Link href='' color="primary.main" sx={{fontSize: 16, fontWeight: 700 }}>Explore the Project</Link>
+              <Link href='/mrp-home' color="primary.main" sx={{fontSize: 16, fontWeight: 700 }}>Explore the Project</Link>
               &nbsp;
               <ArrowCircleRightIcon sx={{ color: 'secondary.light' }} />
             </Typography>
