@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Stack, Pagination, PaginationItem, Box,Typography, useTheme, Skeleton, } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -14,31 +14,31 @@ export default function AllMRP() {
   const [error, setError] = useState(null);
   const [earthDate, setEarthDate] = useState('2024-02-19');
   
-  const fetchCuriosityPhotoData = useCallback(async (earth_date) => {
+  const fetchCuriosityPhotoData = async (earth_date) => {
     try {
-      setIsLoading(true);
-      const response = await axios.get('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos', {
-          params: {
-          api_key: '0SXmsWVzbEGjLof9QfGdwRS9S5r5Qj4w1n2Ew8Fb',
-          //sol: '4037',
-          earth_date: earth_date
-          }
-      })
-          
-      const lastFourItems = response.data.photos;
-      
-      setData(lastFourItems);
-      console.log(data)
-      setIsLoading(false);
+    setIsLoading(true);
+    const response = await axios.get('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos', {
+        params: {
+        api_key: '0SXmsWVzbEGjLof9QfGdwRS9S5r5Qj4w1n2Ew8Fb',
+        //sol: '4037',
+        earth_date: earth_date
+        }
+    })
+        
+    const lastFourItems = response.data.photos;
+    
+    setData(lastFourItems);
+    console.log(data)
+    setIsLoading(false);
     } catch (err) {
-      setError(err);
-      setIsLoading(false);
+    setError(err);
+    setIsLoading(false);
     }
-  },[data]);
+  };
 
   useEffect(() => {
     fetchCuriosityPhotoData(earthDate);
-  }, [earthDate, fetchCuriosityPhotoData]);
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1); 
   
@@ -66,7 +66,7 @@ export default function AllMRP() {
   };
 
   if (error) {
-    return <div>Error: {/*error.message*/}</div>;
+    return <div>Error: {error.message}</div>;
   }
 
   return (
