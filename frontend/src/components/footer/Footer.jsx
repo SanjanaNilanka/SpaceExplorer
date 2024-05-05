@@ -101,17 +101,17 @@ export default function Footer() {
           {/*<Typography variant="body2" fontWeight={600}>
             Product
           </Typography>*/}
-          <Link color="text.secondary" href="#">
-            Features
+          <Link color="text.secondary" href="/home">
+            Home
+          </Link>
+          <Link color="text.secondary" href="/mrp-home">
+            Projects
+          </Link>
+          <Link color="text.secondary" href="/mrp">
+            Rovers
           </Link>
           <Link color="text.secondary" href="#">
-            Testimonials
-          </Link>
-          <Link color="text.secondary" href="#">
-            Highlights
-          </Link>
-          <Link color="text.secondary" href="#">
-            Pricing
+            Satellites
           </Link>
           <Link color="text.secondary" href="#">
             FAQs
