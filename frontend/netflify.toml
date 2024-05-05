@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/mrp"
+  status = 200
