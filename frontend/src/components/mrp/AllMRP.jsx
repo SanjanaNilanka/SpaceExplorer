@@ -173,6 +173,7 @@ export default function AllMRP() {
             >
               <Typography sx={{ color: 'primary.light', fontWeight: 400, fontSize: 16 }}>No Photos Captured By Curiosity in Mars on { earthDate }</Typography>
               <Typography sx={{ color: 'primary.light', fontWeight: 400, fontSize: 16 }}>Please Select Another Date</Typography>
+              <Typography sx={{ color: 'primary.light', fontWeight: 400, fontSize: 16 }}>Select Date Between 2012-08-06 and 2024-02-19 </Typography>
             </Box>
           :
             <Box
