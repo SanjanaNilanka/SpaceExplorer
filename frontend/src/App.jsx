@@ -116,7 +116,7 @@ const App = () => {
           </Routes>
         </main>
         <footer>
-          <Footer/>
+          {is404? <div></div> : <Footer />}
         </footer>
       </Router>
     </ThemeProvider>
