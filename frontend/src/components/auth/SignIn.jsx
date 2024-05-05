@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,10 +8,8 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { alpha, createTheme, ThemeProvider } from '@mui/material/styles';
-import { Navigate } from 'react-router-dom'
+import { alpha } from '@mui/material/styles';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase-config/firebaseConfig';
 
@@ -117,7 +114,7 @@ export default function SignIn() {
               justifyContent: 'center',
             }}
           >
-            <img src='images/favicon-192.png' width={60} />
+            <img src='images/favicon-192.png' width={60} alt='logo'/>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>

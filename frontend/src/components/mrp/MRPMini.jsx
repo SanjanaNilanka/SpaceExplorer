@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Link, Container, Typography } from '@mui/material';
+import { Box, Link, Typography } from '@mui/material';
 
 export default function MRPMini() {
   const [data, setData] = useState([]);
@@ -29,7 +29,7 @@ export default function MRPMini() {
     };
 
     fetchPrevData();
-  }, []);
+  }, [data]);
 
   if (isLoading) {
     return <div>Loading...</div>;
