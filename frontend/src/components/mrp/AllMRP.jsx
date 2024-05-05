@@ -157,52 +157,73 @@ export default function AllMRP() {
             ))}
         </Box>
         :
-        <Box
-            sx={{
-            display: 'flex',
-            justifyContent:'space-evenly',
-            alignItems: 'center',
-            padding: '0 6%',
-            gap: 6,
-            mt: 4,
-            flexWrap: 'wrap'
-            }}
-        >
-            {data.slice(calculateStartIndex(currentPage), calculateEndIndex(currentPage)).map((item, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                      width: '20%',
-                      bgcolor: 'card.background',
-                      padding: '20px',
-                      borderRadius: '10px',
-                  }}
-                >
-                  {/*<Typography sx={{color: 'primary.light', fontWeight:400, fontSize:12}}>C A P T U R E D&nbsp;&nbsp;&nbsp;&nbsp;D A T E</Typography>*/}
-                  <Link 
-                    onClick={()=> {setCurrIndex(index+((currentPage-1)*20))}}
-                    style={{textDecoration: 'none'}}
-                  >
-                    <PopupMRP data={data[currIndex]}/>
-                  </Link>
-                  <Typography 
+        <div>
+          {data.length === 0 ? 
+            <Box
+              sx={{
+              display: 'flex',
+              justifyContent:'space-evenly',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '0 6%',
+              gap: 2,
+              mt: 4,
+              flexWrap: 'wrap'
+              }}
+            >
+              <Typography sx={{ color: 'primary.light', fontWeight: 400, fontSize: 16 }}>No Photos Captured By Curiosity in Mars on { earthDate }</Typography>
+              <Typography sx={{ color: 'primary.light', fontWeight: 400, fontSize: 16 }}>Please Select Another Date</Typography>
+            </Box>
+          :
+            <Box
+                sx={{
+                display: 'flex',
+                justifyContent:'space-evenly',
+                alignItems: 'center',
+                padding: '0 6%',
+                gap: 6,
+                mt: 4,
+                flexWrap: 'wrap'
+                }}
+            >
+                {data.slice(calculateStartIndex(currentPage), calculateEndIndex(currentPage)).map((item, index) => (
+                    <Box
+                      key={index}
                       sx={{
-                          fontSize: 18,
-                          overflow: 'hidden',
-                          whiteSpace: 'nowrap',
-                          textOverflow: 'ellipsis',
-                          maxWidth: '100%',
-                          marginBottom: '10px',
+                          width: '20%',
+                          bgcolor: 'card.background',
+                          padding: '20px',
+                          borderRadius: '10px',
                       }}
-                      title={item.earth_date}
-                  >
-                      {/*item.earth_date*/}
-                  </Typography>
+                    >
+                      {/*<Typography sx={{color: 'primary.light', fontWeight:400, fontSize:12}}>C A P T U R E D&nbsp;&nbsp;&nbsp;&nbsp;D A T E</Typography>*/}
+                      <Link 
+                        onClick={()=> {setCurrIndex(index+((currentPage-1)*20))}}
+                        style={{textDecoration: 'none'}}
+                      >
+                        <PopupMRP data={data[currIndex]}/>
+                      </Link>
+                      <Typography 
+                          sx={{
+                              fontSize: 18,
+                              overflow: 'hidden',
+                              whiteSpace: 'nowrap',
+                              textOverflow: 'ellipsis',
+                              maxWidth: '100%',
+                              marginBottom: '10px',
+                          }}
+                          title={item.earth_date}
+                      >
+                          {/*item.earth_date*/}
+                      </Typography>
 
-                  <img style={{width:'100%', height: '200px', objectFit: 'cover', borderRadius:'5px' }} src={item.img_src} alt={item.title} />
-                </Box>
-            ))}
-        </Box>
+                      <img style={{width:'100%', height: '200px', objectFit: 'cover', borderRadius:'5px' }} src={item.img_src} alt={item.title} />
+                    </Box>
+                ))}
+            </Box>
+          }
+        </div>
+        
       }
       <Stack spacing={2} sx={{display:'flex', alignItems:'center', justifyContent:'center', mt: 5, mb: 5}}>
         <Pagination
