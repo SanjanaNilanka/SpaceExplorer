@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useTheme } from '@mui/material';
-import axios from 'axios';
+import React from 'react'
 import TodayAPOD from '../apod/TodayAPOD';
 import PrevAPOD from '../apod/PrevAPOD';
 import CuriosityRoverBanner from '../mrp/CuriosityRoverBanner';
