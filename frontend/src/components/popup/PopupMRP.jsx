@@ -51,8 +51,8 @@ export default function PopupMRP({ data }) {
       >
         <Box sx={modalStyle}>
         <Box sx={{display: 'flex', justifyContent: 'space-between', mb: 1}}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-            Image captured by {data?.rover.name} Rover's {data?.camera.full_name}&nbsp;|&nbsp;{data?.sol} Sol of {data?.rover.max_sol}
+            <Typography id="modal-modal-title" variant="h5" component="h2" sx={{color: 'secondary.main'}}>
+              Image captured by {data?.rover.name} Rover's {data?.camera.full_name}&nbsp;|&nbsp;{data?.sol} Sol of {data?.rover.max_sol}
             </Typography>
             <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
             <IconButton sx={{display: 'flex', alignItems: 'center'}} onClick={handleDownload}><FileDownloadIcon/></IconButton>
@@ -62,46 +62,46 @@ export default function PopupMRP({ data }) {
         </Box>
         <Box
             sx={{
-            overflowY: 'auto', 
-            scrollbarWidth: 'thin', 
-            scrollbarColor: `${alpha('#888', 0.8)} ${alpha('#f1f1f1', 0.8)}`, 
-            width: '100%',
-            height: '90%',
-            '&::-webkit-scrollbar-track': {
-                background: '#f1f1f1', 
-            },
-            '&::-webkit-scrollbar-thumb': {
-                background: '#888',
-            },
-            '&::-webkit-scrollbar-thumb:hover': {
-                background: '#555',
-            },
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'start',
-            gap:2,
-            pr: '5px'
+              overflowY: 'auto', 
+              scrollbarWidth: 'thin', 
+              scrollbarColor: `${alpha('#888', 0.8)} ${alpha('#f1f1f1', 0.8)}`, 
+              width: '100%',
+              height: '90%',
+              '&::-webkit-scrollbar-track': {
+                  background: '#f1f1f1', 
+              },
+              '&::-webkit-scrollbar-thumb': {
+                  background: '#888',
+              },
+              '&::-webkit-scrollbar-thumb:hover': {
+                  background: '#555',
+              },
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'start',
+              gap:2,
+              pr: '5px'
             }}
         >
             <img style={{width:'75%', height:'100%', objectFit: 'cover', borderRadius:'5px' }} src={data?.img_src} alt={data?.id} />
             <Box id="modal-modal-description" sx={{ width: '25%', textAlign: 'right', display:'flex', justifyContent: 'space-between', flexDirection:'column' }}>
                 
                 <Box sx={{display:'flex', flexDirection:'column', alignItems:'start', mb: 5}}>
-                    <Typography sx={{fontWeight:400, fontSize: '14px'}}>M I S S I O N &nbsp; D E T A I L S</Typography>
+                    <Typography sx={{fontWeight:400, fontSize: '14px', color: `${theme.palette.mode === 'light'? 'primary.main':'primary.light'}`}}>M I S S I O N &nbsp; D E T A I L S</Typography>
                     <Typography sx={{fontWeight:600, fontSize: '18px', display:'flex', textAlign: 'justify'}}>
                         curiosity Rover is launched on {data?.rover.launch_date} and its landing on {data?.rover.landing_date}. Mission is currently {data?.rover.status} mission. {data?.rover.total_photos} photos are captured by {data?.rover.name} rover in this mission between {data?.rover.landing_date} and {data?.rover.max_date}.
                     </Typography>
                 </Box>
                 <Box sx={{display:'flex', flexDirection:'column', alignItems:'start', mb: 2}}>
-                    <Typography sx={{fontWeight:400, fontSize: '14px'}}>E A R T H &nbsp; D A T E</Typography>
+                    <Typography sx={{fontWeight:400, fontSize: '14px', color: `${theme.palette.mode === 'light'? 'primary.main':'primary.light'}`}}>E A R T H &nbsp; D A T E</Typography>
                     <Typography sx={{fontWeight:600, fontSize: '20px', display:'flex'}}>{data?.earth_date}</Typography>
                 </Box>
                 <Box sx={{display:'flex', flexDirection:'column', alignItems:'start', mb: 2}}>
-                    <Typography sx={{fontWeight:400, fontSize: '14px'}}>C A P T U R E D &nbsp; B Y</Typography>
+                    <Typography sx={{fontWeight:400, fontSize: '14px', color: `${theme.palette.mode === 'light'? 'primary.main':'primary.light'}`}}>C A P T U R E D &nbsp; B Y</Typography>
                     <Typography sx={{fontWeight:600, fontSize: '20px', display:'flex'}}>{data?.rover.name} Rover</Typography>
                 </Box>
                 <Box sx={{display:'flex', flexDirection:'column', alignItems:'start', mb: 0}}>
-                    <Typography sx={{fontWeight:400, fontSize: '14px'}}>C A M E R A &nbsp; N A M E</Typography>
+                    <Typography sx={{fontWeight:400, fontSize: '14px', color: `${theme.palette.mode === 'light'? 'primary.main':'primary.light'}`}}>C A M E R A &nbsp; N A M E</Typography>
                     <Typography sx={{fontWeight:600, fontSize: '20px', display:'flex', alignItems: 'center', gap: 1}}>
                         {data?.camera.name}
                         <Tooltip title={data?.camera.full_name} placement="right-start">

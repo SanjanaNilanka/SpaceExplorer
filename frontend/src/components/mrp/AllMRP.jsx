@@ -136,24 +136,27 @@ export default function AllMRP() {
       {isLoading ? 
         <Box
             sx={{
-                display: 'flex',
-                justifyContent:'space-between',
-                alignItems: 'start',
-                padding: '0 6%',
-                gap: 1,
-                mt: 4,
-                flexWrap: 'wrap',
+              display: 'flex',
+              justifyContent:'space-evenly',
+              alignItems: 'center',
+              padding: '0 6%',
+              gap: 6,
+              mt: 4,
+              flexWrap: 'wrap'
             }}
         >
-            {[...Array(4)].map((_, index) => (
-                <Skeleton
-                    sx={{
-                        width: '20%',
-                        height: '450px',
-                        bgcolor: 'card.background',
-                        borderRadius: '10px',
-                    }}
-                />
+            {[...Array(20)].map((_, index) => (
+              <Box
+                sx={{
+                    width: '20%',
+                    bgcolor: 'card.background',
+                    padding: '20px',
+                    borderRadius: '10px',
+                }}
+              >
+                <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={'30%'} />
+                <Skeleton variant="text" sx={{ fontSize: '14rem', mt:-8, mb: -8 }} width={'100%'}/>
+              </Box>
             ))}
         </Box>
         :

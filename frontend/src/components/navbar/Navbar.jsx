@@ -94,11 +94,9 @@ const Navbar = ({ onThemeToggle }) => {
           boxShadow: 0,
           bgcolor: 'transparent',
           backgroundImage: 'none',
-          mt: 2,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          p: '0 6%'
         }}
       >
         <Box sx={{ width: '100%' }}>
@@ -109,12 +107,12 @@ const Navbar = ({ onThemeToggle }) => {
               alignItems: 'center',
               justifyContent: 'space-between',
               flexShrink: 0,
-              borderRadius: '20px',
               bgcolor:'background.navbar',
               backdropFilter: 'blur(5px)',
               maxHeight: 40,
               border: '1px solid',
               borderColor: 'divider',
+              p: 4.5,
               boxShadow:
                 theme.palette.mode === 'light'
                   ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
@@ -131,7 +129,7 @@ const Navbar = ({ onThemeToggle }) => {
                 px: 0,
               }}
             >
-              <Box sx={{ ml: '-2px', display:'flex', alignItems: 'center', gap: 1}}>
+              <Box sx={{ ml: '-2px', display:'flex', alignItems: 'center', gap: 1, pl:"2%"}}>
                 <img
                   src={
                     'images/favicon-192.png'
@@ -190,6 +188,7 @@ const Navbar = ({ onThemeToggle }) => {
                 display: { xs: 'none', md: 'flex' },
                 gap: 0.5,
                 alignItems: 'center',
+                pr: '1%'
               }}
             >
               <Box sx={{ maxWidth: '32px' }}>
