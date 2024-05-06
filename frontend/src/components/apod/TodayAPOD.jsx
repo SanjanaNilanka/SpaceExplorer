@@ -156,16 +156,20 @@ export default function TodayAPOD() {
           >
             <Box
               sx={{
-                width:'60%' ,
+                width: { md: '60%', xs: '100%', } ,
               }}
             >
-              
+              {apodData?.media_type === 'video' ?
+              <iframe width="100%" height="400px" src={apodData?.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              :
               <img src={apodData?.url} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '10px' }} alt={apodData?.url}/>
+              }
+              
             </Box>
                   
             <Box
               sx={{
-                width: '40%',
+                width: { md: '40%', xs: '100%', },
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'start',

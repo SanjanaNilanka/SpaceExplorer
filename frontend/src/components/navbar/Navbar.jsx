@@ -119,17 +119,8 @@ const Navbar = ({ onThemeToggle }) => {
                   : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
             })}
           >
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: 'flex',
-                alignItems: 'center',
-                gap:3,
-                ml: '-18px',
-                px: 0,
-              }}
-            >
-              <Box sx={{ ml: '-2px', display:'flex', alignItems: 'center', gap: 1, pl:"2%"}}>
+            
+              <Box sx={{ display:'flex', alignItems: 'center', gap: 1 }}>
                 <img
                   src={
                     'images/favicon-192.png'
@@ -145,7 +136,7 @@ const Navbar = ({ onThemeToggle }) => {
                   sx={{ py: '6px', px: '12px' }}
                   
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{fontWeight: 500, fontSize: 15}}>
                     Home
                   </Typography>
                 </MenuItem>
@@ -153,7 +144,7 @@ const Navbar = ({ onThemeToggle }) => {
                   onClick={() => navigate('/mrp')}
                   sx={{ py: '6px', px: '12px' }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{fontWeight: 500, fontSize: 15}}>
                     Projects
                   </Typography>
                 </MenuItem>
@@ -161,7 +152,7 @@ const Navbar = ({ onThemeToggle }) => {
                   onClick={() => navigate('/mrp')}
                   sx={{ py: '6px', px: '12px' }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{fontWeight: 500, fontSize: 15}}>
                     Rovers
                   </Typography>
                 </MenuItem>
@@ -169,7 +160,7 @@ const Navbar = ({ onThemeToggle }) => {
                  onClick={() => navigate('/satellites')}
                   sx={{ py: '6px', px: '12px' }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{fontWeight: 500, fontSize: 15}}>
                     Satellites
                   </Typography>
                 </MenuItem>
@@ -177,107 +168,110 @@ const Navbar = ({ onThemeToggle }) => {
                   onClick={() => navigate('/faq')}
                   sx={{ py: '6px', px: '12px' }}
                 >
-                  <Typography variant="body2" color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{fontWeight: 500, fontSize: 15}}>
                     FAQ
                   </Typography>
                 </MenuItem>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-                gap: 0.5,
-                alignItems: 'center',
-                pr: '1%'
-              }}
-            >
-              <Box sx={{ maxWidth: '32px' }}>
-                <Button
-                  variant="text"
-                  onClick={onThemeToggle}
-                  size="small"
-                  aria-label="button to toggle theme"
-                  sx={{ minWidth: '32px', height: '32px', p: '4px' }}
-                >
-                  {theme.palette.mode === 'dark' ? (
-                    <WbSunnyRoundedIcon fontSize="small" />
-                  ) : (
-                    <ModeNightRoundedIcon fontSize="small" />
-                  )}
-                </Button>
-              </Box>
-              {!userDetails ?
-                <Box sx={{display: 'flex', gap: 1}}>
+              <Box
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  gap: 0.5,
+                  alignItems: 'center',
+                  pr: '1%'
+                }}
+              >
+                <Box sx={{ maxWidth: '32px' }}>
                   <Button
-                    color="primary"
                     variant="text"
+                    onClick={onThemeToggle}
                     size="small"
-                    component="a"
-                    href="/sign-in"
+                    aria-label="button to toggle theme"
+                    sx={{ minWidth: '32px', height: '32px', p: '4px' }}
                   >
-                    Sign in
-                  </Button>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    size="small"
-                    component="a"
-                    href="/sign-up"
-                  >
-                    Sign up
+                    {theme.palette.mode === 'dark' ? (
+                      <WbSunnyRoundedIcon fontSize="small" />
+                    ) : (
+                      <ModeNightRoundedIcon fontSize="small" />
+                    )}
                   </Button>
                 </Box>
-                :
-                <Box sx={{color:'text.primary', display:'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2}}>
-                  &nbsp;&nbsp;&nbsp;{userDetails.firstName} {userDetails.lastName}
-                  <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        onClick={handleClick}
-                        size="small"
-                        sx={{ ml: 2 }}
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                      >
-                        <Avatar sx={{ width: 32, height: 32 }}/>
-                      </IconButton>
-                    </Tooltip>
+                {!userDetails ?
+                  <Box sx={{display: 'flex', gap: 1}}>
+                    <Button
+                      color="primary"
+                      variant="text"
+                      size="small"
+                      component="a"
+                      href="/sign-in"
+                    >
+                      Sign in
+                    </Button>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      size="small"
+                      component="a"
+                      href="/sign-up"
+                    >
+                      Sign up
+                    </Button>
                   </Box>
-                  <Menu
-                    anchorEl={anchorEl}
-                    id="account-menu"
-                    open={menuOpen}
-                    onClose={handleClose}
-                    onClick={handleClose}
-                    
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                  >
-                    <Box sx={{backgroundColor:'background.menu', width:'200px', p: '5px 10px'}}>
-                      <MenuItem onClick={handleClose}>
-                        <Avatar sx={{width: '30px', height:'30px'}}/> &nbsp;&nbsp;&nbsp;Profile
-                      </MenuItem>
-                      <Divider />
-                      <MenuItem onClick={handleClose}>
-                        <ListItemIcon>
-                          <Settings fontSize="small" />
-                        </ListItemIcon>
-                        Settings
-                      </MenuItem>
-                      <MenuItem onClick={handleLogout}>
-                        <ListItemIcon>
-                          <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
-                      </MenuItem>
+                  :
+                  <Box sx={{color:'text.primary', display:'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2}}>
+                    &nbsp;&nbsp;&nbsp;{userDetails.firstName} {userDetails.lastName}
+                    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                      <Tooltip title="Account settings">
+                        <IconButton
+                          onClick={handleClick}
+                          size="small"
+                          sx={{ ml: 2 }}
+                          aria-controls={open ? 'account-menu' : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? 'true' : undefined}
+                        >
+                          <Avatar sx={{ width: 32, height: 32 }}/>
+                        </IconButton>
+                      </Tooltip>
                     </Box>
-                    
-                  </Menu>
-                </Box>
-              }
+                    <Menu
+                      anchorEl={anchorEl}
+                      id="account-menu"
+                      open={menuOpen}
+                      onClose={handleClose}
+                      onClick={handleClose}
+                      
+                      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                    >
+                      <Box sx={{backgroundColor:'background.menu', width:'200px', p: '5px 10px'}}>
+                        <MenuItem onClick={handleClose}>
+                          <Avatar sx={{width: '30px', height:'30px'}}/> &nbsp;&nbsp;&nbsp;Profile
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={handleClose}>
+                          <ListItemIcon>
+                            <Settings fontSize="small" />
+                          </ListItemIcon>
+                          Settings
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>
+                          <ListItemIcon>
+                            <Logout fontSize="small" />
+                          </ListItemIcon>
+                          Logout
+                        </MenuItem>
+                      </Box>
+                      
+                    </Menu>
+                  </Box>
+                }
+              </Box> 
               
-            </Box>
+              
+            
+            
+             
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
                 variant="text"
@@ -322,16 +316,16 @@ const Navbar = ({ onThemeToggle }) => {
                     </Box>
                   </Box>
                   <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
+                    Home
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('testimonials')}>
-                    Testimonials
+                    Projects
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('highlights')}>
-                    Highlights
+                    Rovers
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
+                    Satellites
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />

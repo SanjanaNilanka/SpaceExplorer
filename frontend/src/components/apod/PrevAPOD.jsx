@@ -181,9 +181,9 @@ const PrevAPOD = () => {
       </Box>
       <Box
         sx={{
-            display: 'flex',
+            display: { md: 'flex', xs: 'block', },
             justifyContent: 'space-between',
-            
+            flexDirection: { md: 'row', xs: 'column', },
             gap: 4,
         }}
       >
@@ -191,10 +191,11 @@ const PrevAPOD = () => {
             <Box
                 key={index}
                 sx={{
-                    width: '22%',
+                    width: { md: '22%', xs: '100%', },
                     bgcolor: 'card.background',
                     padding: '20px',
                     borderRadius: '10px',
+                    marginBottom: { md: 0, xs: 4, }
                 }}
             >
               <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -242,10 +243,18 @@ const PrevAPOD = () => {
                         pr: '5px'
                       }}
                     >
+                      {item.media_type === 'video' ? 
+                      <iframe width="60%" height="100%" src={item.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      : 
                       <img style={{width:'60%', height:'100%', objectFit: 'cover', borderRadius:'5px' }} src={data[currIndex]?.hdurl} alt={data[currIndex]?.title} />
+                      }
+                      
                       <Typography id="modal-modal-description" sx={{ width: '40%', textAlign: 'justify' }}>
-                        <Typography sx={{fontWeight:400, fontSize: '18px'}}>{data[currIndex]?.date}</Typography>
-                        <Typography sx={{fontWeight:600, fontSize: '20px', mt: 1, mb:1, display:'flex', alignItems: 'center'}}><CopyrightIcon/>&nbsp;{data[currIndex]?.copyright}</Typography>
+                        <Typography sx={{fontWeight:400, mb:1, fontSize: '18px'}}>{data[currIndex]?.date}</Typography>
+                        {data[currIndex]?.copyright &&
+                          <Typography sx={{fontWeight:600, fontSize: '20px', mb: 1, display:'flex', alignItems: 'center'}}><CopyrightIcon/>&nbsp;{data[currIndex]?.copyright}</Typography>
+                        }
+                        
                         {data[currIndex]?.explanation}
                       </Typography>
                     </Box>
@@ -267,8 +276,12 @@ const PrevAPOD = () => {
               >
                   {item.title}
               </Typography>
-
+              {item.media_type === 'video' ?
+              <iframe width="100%" height="200px" src={item.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              :
               <img style={{width:'100%', height: '200px', objectFit: 'cover', borderRadius:'5px' }} src={item.hdurl} alt={item.title} />
+              }
+              
                 
             </Box>
         ))}
