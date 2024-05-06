@@ -29,13 +29,15 @@ function Copyright() {
 
 export default function Footer() {
   return (
-    <Container
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         gap: { xs: 4, sm: 8 },
         py: { xs: 8, sm: 10 },
+        pl: '6%',
+        pr: '6%',
         textAlign: { sm: 'center', md: 'left' },
       }}
     >
@@ -215,6 +217,6 @@ export default function Footer() {
           </IconButton>
         </Stack>
       </Box>
-    </Container>
+    </Box>
   );
 }
