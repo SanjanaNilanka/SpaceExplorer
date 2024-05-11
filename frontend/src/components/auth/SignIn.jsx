@@ -78,7 +78,7 @@ export default function SignIn() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(images/astronaut.jpeg)',
+            backgroundImage: { sm:'url(images/astronaut.jpeg)'},
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

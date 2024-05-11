@@ -348,30 +348,85 @@ const Navbar = ({ onThemeToggle }) => {
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
-                  <MenuItem>
+                  {!userDetails ?
+                <div>
+                  {isLoggedIn?
+                  <Box sx={{ml:2}}>
+                    <CircularProgress/>
+                  </Box>
+                  :
+                  <Box sx={{display: 'flex', gap: 1, flexDirection:'column'}}>
                     <Button
                       color="primary"
-                      variant="contained"
+                      variant="text"
+                      size="small"
                       component="a"
-                      href="/material-ui/getting-started/templates/sign-up/"
-                      target="_blank"
-                      sx={{ width: '100%' }}
-                    >
-                      Sign up
-                    </Button>
-                  </MenuItem>
-                  <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/material-ui/getting-started/templates/sign-in/"
-                      target="_blank"
-                      sx={{ width: '100%' }}
+                      href="/sign-in"
                     >
                       Sign in
                     </Button>
-                  </MenuItem>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      size="small"
+                      component="a"
+                      href="/sign-up"
+                    >
+                      Sign up
+                    </Button>
+                  </Box>
+                  }
+                </div>
+                  
+                  :
+                  <Box sx={{color:'text.primary', display:'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2}}>
+                    &nbsp;&nbsp;&nbsp;{userDetails.firstName} {userDetails.lastName}
+                    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                      <Tooltip title="Account settings">
+                        <IconButton
+                          onClick={handleClick}
+                          size="small"
+                          sx={{ ml: 2 }}
+                          aria-controls={open ? 'account-menu' : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? 'true' : undefined}
+                        >
+                          <Avatar sx={{ width: 32, height: 32 }}/>
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                    <Menu
+                      anchorEl={anchorEl}
+                      id="account-menu"
+                      open={menuOpen}
+                      onClose={handleClose}
+                      onClick={handleClose}
+                      
+                      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                    >
+                      <Box sx={{backgroundColor:'background.menu', width:'200px', p: '5px 10px'}}>
+                        <MenuItem onClick={handleClose}>
+                          <Avatar sx={{width: '30px', height:'30px'}}/> &nbsp;&nbsp;&nbsp;Profile
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={handleClose}>
+                          <ListItemIcon>
+                            <Settings fontSize="small" />
+                          </ListItemIcon>
+                          Settings
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>
+                          <ListItemIcon>
+                            <Logout fontSize="small" />
+                          </ListItemIcon>
+                          Logout
+                        </MenuItem>
+                      </Box>
+                      
+                    </Menu>
+                  </Box>
+                }
                 </Box>
               </Drawer>
             </Box>

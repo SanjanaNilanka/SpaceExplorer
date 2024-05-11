@@ -243,14 +243,15 @@ const PrevAPOD = () => {
                         pr: '5px'
                       }}
                     >
-                      {item.media_type === 'video' ? 
-                      <iframe width="60%" height="100%" src={item.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      {data[currIndex].media_type === 'video' ? 
+                      <iframe width="60%" height="100%" src={data[currIndex].url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                      
                       : 
                       <img style={{width:'60%', height:'100%', objectFit: 'cover', borderRadius:'5px' }} src={data[currIndex]?.hdurl} alt={data[currIndex]?.title} />
                       }
                       
                       <Typography id="modal-modal-description" sx={{ width: '40%', textAlign: 'justify' }}>
-                        <Typography sx={{fontWeight:400, mb:1, fontSize: '18px'}}>{data[currIndex]?.date}</Typography>
+                      <Typography sx={{ fontWeight: 400, mb: 1, fontSize: '18px' }}>{data[currIndex]?.date}{data[currIndex]?.media_type}</Typography>
                         {data[currIndex]?.copyright &&
                           <Typography sx={{fontWeight:600, fontSize: '20px', mb: 1, display:'flex', alignItems: 'center'}}><CopyrightIcon/>&nbsp;{data[currIndex]?.copyright}</Typography>
                         }
