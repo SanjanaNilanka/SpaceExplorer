@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Toolbar, Typography, useTheme, Tooltip, Divider, MenuItem, Drawer, Avatar } from '@mui/material';
+import { AppBar, Box, Button, Toolbar, Typography, useTheme, Tooltip, Divider, MenuItem, Drawer, Avatar, CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
@@ -30,6 +30,15 @@ const Navbar = ({ onThemeToggle }) => {
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const isLoggedinFromLocalStorage = localStorage.getItem('isLoggedin');
+    if (isLoggedinFromLocalStorage === true || isLoggedinFromLocalStorage === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const [userDetails, setUserDetails] = useState(null)
 
@@ -63,6 +72,7 @@ const Navbar = ({ onThemeToggle }) => {
       auth.signOut();
       console.log('logout successfully')
       handleClose();
+      localStorage.setItem('isLoggedin', false);
       window.location.pathname = '/';
     } catch (err) {
       console.log(err.message);
@@ -196,7 +206,13 @@ const Navbar = ({ onThemeToggle }) => {
                     )}
                   </Button>
                 </Box>
-                {!userDetails ?
+              {!userDetails ?
+                <div>
+                  {isLoggedIn?
+                  <Box sx={{ml:2}}>
+                    <CircularProgress/>
+                  </Box>
+                  :
                   <Box sx={{display: 'flex', gap: 1}}>
                     <Button
                       color="primary"
@@ -217,6 +233,9 @@ const Navbar = ({ onThemeToggle }) => {
                       Sign up
                     </Button>
                   </Box>
+                  }
+                </div>
+                  
                   :
                   <Box sx={{color:'text.primary', display:'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2}}>
                     &nbsp;&nbsp;&nbsp;{userDetails.firstName} {userDetails.lastName}

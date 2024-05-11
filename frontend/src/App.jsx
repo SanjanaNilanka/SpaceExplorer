@@ -97,6 +97,7 @@ const App = () => {
     }
 
   }, []);
+  
 
   return (
     <ThemeProvider theme={currentTheme}>

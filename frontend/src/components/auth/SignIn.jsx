@@ -12,12 +12,13 @@ import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase-config/firebaseConfig';
+import { Alert, Snackbar } from '@mui/material';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://spaceexplorer.netlify.net/">
+      <Link color="inherit" href="/">
         Space Explorer
       </Link>{' '}
       {new Date().getFullYear()}
@@ -28,6 +29,22 @@ function Copyright(props) {
 
 export default function SignIn() {
 
+  const [loginMsg, setLoginMsg] = React.useState('login msg')
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+    
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,10 +53,15 @@ export default function SignIn() {
     
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem('isLoggedin', true);
+      setLoginMsg('Login successful!');
+      setOpen(true);
       window.location.pathname = '/';
       console.log('Sign in successful');
     } catch (err) { 
       console.log('Sign in failed');
+      setOpen(true);
+      setLoginMsg('Incorrect username or password!')
     }
     
   };
@@ -159,13 +181,26 @@ export default function SignIn() {
                 </Grid>
               <Grid item>
                   Don't have an account?
-                  <Link href="#" variant="body2" sx={{fontStyle: 'italic'}}>
+                  <Link href="sign-up" variant="body2" sx={{fontStyle: 'italic'}}>
                     {" Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
+            <Snackbar
+              open={open}
+              autoHideDuration={3000} // Automatically close after 30000ms (30 seconds)
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+            >
+              <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+                {loginMsg}
+              </Alert>
+            </Snackbar>
           </Box>
         </Grid>
       </Grid>
