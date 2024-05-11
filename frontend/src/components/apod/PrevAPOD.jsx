@@ -251,7 +251,7 @@ const PrevAPOD = () => {
                       }
                       
                       <Typography id="modal-modal-description" sx={{ width: '40%', textAlign: 'justify' }}>
-                      <Typography sx={{ fontWeight: 400, mb: 1, fontSize: '18px' }}>{data[currIndex]?.date}{data[currIndex]?.media_type}</Typography>
+                      <Typography sx={{ fontWeight: 400, mb: 1, fontSize: '18px' }}>{data[currIndex]?.date}</Typography>
                         {data[currIndex]?.copyright &&
                           <Typography sx={{fontWeight:600, fontSize: '20px', mb: 1, display:'flex', alignItems: 'center'}}><CopyrightIcon/>&nbsp;{data[currIndex]?.copyright}</Typography>
                         }
